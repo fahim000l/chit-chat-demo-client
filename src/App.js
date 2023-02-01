@@ -4,7 +4,7 @@ import "./App.css";
 import Chat from "./components/Chat";
 import LogIn from "./components/LogIn";
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://chit-chat-demo-server.vercel.app");
 
 function App() {
   const [userName, setUserName] = useState("");
