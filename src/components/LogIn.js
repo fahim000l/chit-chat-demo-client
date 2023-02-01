@@ -16,7 +16,7 @@ const LogIn = ({ socket, setUserName, setRoomNumber }) => {
   };
 
   return (
-    <div className="w-[60%] mx-auto mt-10 bg-blue-300 p-10 border-2 border-solid border-blue-700 rounded-lg">
+    <div className="lg:w-[60%] w-[90%] mx-auto mt-10 bg-blue-300 p-10 border-2 border-solid border-blue-700 rounded-lg">
       <p className="font-bold text-xl">
         Please enter your user Name and room number to log in
       </p>
