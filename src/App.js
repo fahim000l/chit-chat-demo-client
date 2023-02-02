@@ -1,21 +1,13 @@
-import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
+import { useState } from "react";
+import io from "socket.io-client";
 import "./App.css";
 import Chat from "./components/Chat";
 import LogIn from "./components/LogIn";
 
-const socket = io.connect("https://chit-chat-demo-server.vercel.app/");
-
+const socket = io.connect("https://chit-chat-demo-server.onrender.com/");
 function App() {
   const [userName, setUserName] = useState("");
   const [rooNumber, setRoomNumber] = useState("");
-
-  // useEffect(() => {
-  //   if (rooNumber) {
-  //     console.log(rooNumber);
-  //     socket.emit("join_room", rooNumber);
-  //   }
-  // }, [rooNumber]);
 
   return (
     <div className="App">
