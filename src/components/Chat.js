@@ -42,21 +42,40 @@ const Chat = ({ socket, userName, rooNumber }) => {
   }, [receivedMsg]);
 
   return (
-    <div className="lg:w-[60%] w-[90%] mx-auto mb-10 mt-10">
-      <ScrollToBottom className="bg-gray-400 h-[500px] mb-5 rounded-lg border-2 border-solid border-black">
-        {!messageList && (
+    <div className="lg:w-[60%] w-[90%] mx-auto mt-5 h-screen">
+      <ScrollToBottom className="bg-white h-[500px] mb-5 rounded-lg border-2 border-solid border-black">
+        <p className="bg-gray-500 inline px-2 py-1 rounded-xl mt-5 text-white font-bold">
+          {userName} joined the conversation
+        </p>
+        {messageList.length === 0 && (
           <p className="text-xl font-bold">Please Start Conversation</p>
         )}
         <div className="mt-10">
-          {messageList.map((msg) =>
+          {messageList.map((msg, i) =>
             msg.authorName === userName ? (
-              <div className="chat chat-end">
-                <div className="chat-bubble">{msg.msgContent}</div>
+              <div key={i} className="flex flex-col items-end">
+                <div className="chat-header">
+                  <time className="text-xs opacity-50 mr-2">
+                    {msg.authorName}
+                  </time>
+                </div>
+                <div className="chat chat-end">
+                  <div className="chat-bubble text-start">{msg.msgContent}</div>
+                </div>
+                <div className="chat-footer opacity-50">{msg.time}</div>
               </div>
             ) : (
-              <div className="chat chat-start">
-                <div className="chat-bubble chat-bubble-primary">
-                  {msg.msgContent}
+              <div key={i} className="flex flex-col items-start">
+                <div className="chat-header">
+                  <time className="text-xs opacity-50 ml-2">
+                    {msg.authorName}
+                  </time>
+                </div>
+                <div className="chat chat-start">
+                  <div className="chat-bubble chat-bubble-primary text-start">
+                    {msg.msgContent}
+                  </div>
+                  <div className="chat-footer opacity-50">{msg.time}</div>
                 </div>
               </div>
             )
@@ -80,13 +99,13 @@ const Chat = ({ socket, userName, rooNumber }) => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
-            class="w-6 h-6"
+            className="w-6 h-6"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
             />
           </svg>
